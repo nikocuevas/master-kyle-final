@@ -1,0 +1,19 @@
+{
+  "name": "master-kyle-final",
+  "version": "1.0.0",
+  "description": "Kyle Cuevas CodeceptJS+WebdriverIO Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N/A.git"
+  },
+  "author": "Kyle Cuevas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N/A/issues"
+  },
+  "homepage": "https://github.com/N/A#readme"
+}
