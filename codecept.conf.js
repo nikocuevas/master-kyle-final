@@ -2,20 +2,22 @@ exports.config = {
   output: './output',
   helpers: {
     WebDriver: {
-      url: 'http://localhost',
+      url: 'https://owens.com',
       browser: 'chrome',
       host: '127.0.0.1',
       port: 4444,
-      restart: false,
-      windowSize: '1920x1680',
+      restart: true,
+      windowSize: '1600x753',
+      //keepCookies: true,
+      //smartWait: 30000,
     }
   },
   include: {
-    I: './steps_file.js'
+    "I": "./steps_file.js",
   },
   mocha: {},
   bootstrap: null,
-  timeout: null,
+  timeout: 60,
   teardown: null,
   hooks: [],
   gherkin: {
@@ -23,8 +25,12 @@ exports.config = {
     steps: './step_definitions/*.js'
   },
   plugins: {
+    stepByStepReport: {
+      enabled: true,
+      deleteSuccessful: false,
+    },
     screenshotOnFail: {
-      enabled: true
+      enabled: false
     },
     tryTo: {
       enabled: true
