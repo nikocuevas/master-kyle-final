@@ -1,6 +1,7 @@
 exports.config = {
   output: './output',
   helpers: {
+    
     WebDriver: {
       url: 'https://owens.com',
       browser: 'chrome',
@@ -10,10 +11,27 @@ exports.config = {
       windowSize: '1600x753',
       //keepCookies: true,
       //smartWait: 30000,
-    }
+    },
   },
   include: {
     "I": "./steps_file.js",
+  },
+  multiple:{
+    basic:{
+      "browsers": [
+        {
+            browser: "chrome",
+            desiredCapabilities:{
+               browserName: "chrome", 
+            },
+         //   outputName: "chrome"
+        },
+        {
+            browser: "MicrosoftEdge",
+           // outputName: "edge"
+        }
+    ]
+    },
   },
   mocha: {},
   bootstrap: null,
@@ -25,9 +43,21 @@ exports.config = {
     steps: './step_definitions/*.js'
   },
   plugins: {
+    allure: {
+      enabled: true,
+      outputDir: "./allure-results",
+      addConsoleLogs: true,
+    },
+    autoDelay: {
+      enabled: true,
+      delayAfter: 2000,
+    },
     stepByStepReport: {
       enabled: true,
-      deleteSuccessful: false,
+      screenshotsForAllureReport: true,
+      deleteSuccessful: true,
+      screenshotOnFail: true,
+      //output: "./allure-results",
     },
     screenshotOnFail: {
       enabled: false

@@ -1,6 +1,7 @@
 const { I } = inject();
 // Add in your custom step files
 const assert = require('assert');
+const allure = codeceptjs.container.plugins('allure');
 
 Before(async () => {
   // This code will run before each scenario
@@ -12,24 +13,25 @@ After(async () => {
 });
 
 Given('I use credentials as standard user', async() => {
+  allure.severity('critical');
   await I.waitForElement({id: 'user-name'}, 60);
   await I.waitForElement({id: 'password'}, 60);
   await I.fillField({id: 'user-name'}, 'standard_user');
-  await I.fillField({id: 'password'}, 'secret_sauce');
+  await I.fillField({id: 'password'}, secret('secret_sauce'));
 });
 
 Given('I user credentials as locked out user', async() => {
   await I.waitForElement({id: 'user-name'}, 60);
   await I.waitForElement({id: 'password'}, 60);
   await I.fillField({id: 'user-name'}, 'locked_out_user');
-  await I.fillField({id: 'password'}, 'secret_sauce');
+  await I.fillField({id: 'password'}, secret('secret_sauce'));
 });
 
 Given('I use credentials as as problem user', async() => {
   await I.waitForElement({id: 'user-name'}, 60);
   await I.waitForElement({id: 'password'}, 60);
   await I.fillField({id: 'user-name'}, 'problem_user');
-  await I.fillField({id: 'password'}, 'secret_sauce');
+  await I.fillField({id: 'password'}, secret('secret_sauce'));
 });
 
 // common method
